@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { shade } from "polished";
 
 export const Container = styled.button`
   width: 100%;
@@ -16,4 +17,8 @@ export const Container = styled.button`
   line-height: 1.75;
   letter-spacing: 0.8px;
   margin-top: 42px;
+
+  &:hover {
+    background-color: ${shade(0.2, "#5b0095")};
+  }
 `;

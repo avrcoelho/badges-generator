@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 import { Container } from "./styles";
 
 interface PopoverProps {
-  title: string;
+  title: string | ReactNode;
   className?: string;
   width?: number;
 }

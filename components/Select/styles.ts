@@ -10,12 +10,14 @@ export const Container = styled.div<ContainerProps>`
   flex-direction: column;
   line-height: 1.74;
   letter-spacing: 0.7px;
+  margin-top: 28px !important;
 
   & + div {
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   label {
+    line-height: 12px;
     font-size: 14px;
     text-transform: uppercase;
     color: #666;

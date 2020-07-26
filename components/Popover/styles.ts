@@ -16,12 +16,17 @@ export const Container = styled.div<ContainerProps>`
     opacity: 0;
     transition: opacity 0.4s;
     position: absolute;
-    bottom: calc(100% + 12px);
+    bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
     color: #312e38;
     visibility: hidden;
     text-transform: none;
+    line-height: 16px;
+
+    a {
+      color: #fff;
+    }
 
     @media (max-width: 750px) {
       transform: unset;

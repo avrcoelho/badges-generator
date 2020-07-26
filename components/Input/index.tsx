@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, InputHTMLAttributes } from "react";
+import { FC, useEffect, useRef, InputHTMLAttributes, ReactNode } from "react";
 import { useField } from "@unform/core";
 import { FiHelpCircle } from "react-icons/fi";
 
@@ -7,7 +7,7 @@ import { Container, Info } from "./styles";
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label: string;
-  info?: string;
+  info?: string | ReactNode;
   widthTootip?: number;
 }
 

@@ -102,7 +102,23 @@ const Home: FC = () => {
               name="logo"
               label="Logo"
               placeholder="Optional"
-              info="Insert one of the named logos from (bitcoin, dependabot, discord, gitlab, npm, paypal, serverfault, stackexchange, superuser, telegram, travis) or simple-icons. Simple-icons are referenced using names as they appear on the simple-icons site. If the name includes spaces, replace them with dashes. Or insert custom logo image (≥ 14px high). There is a limit on the total size of request headers we can accept (8192 bytes). From a practical perspective, this means the base64-encoded image text is limited to somewhere slightly under 8192 bytes depending on the rest of the request header."
+              info={
+                <>
+                  Insert one of the named logos from (bitcoin, dependabot,
+                  discord, gitlab, npm, paypal, serverfault, stackexchange,
+                  superuser, telegram, travis) or{" "}
+                  <a href="https://simpleicons.org/" target="_blank">
+                    simple-icons
+                  </a>
+                  . Simple-icons are referenced using names as they appear on
+                  the simple-icons site. If the name includes spaces, replace
+                  them with dashes. Or insert custom logo image (≥ 14px high).
+                  There is a limit on the total size of request headers we can
+                  accept (8192 bytes). From a practical perspective, this means
+                  the base64-encoded image text is limited to somewhere slightly
+                  under 8192 bytes depending on the rest of the request header.
+                </>
+              }
             />
             <Input
               name="logoColor"

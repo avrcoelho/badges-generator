@@ -14,17 +14,18 @@ export const Container = styled.div<ContainerProps>`
   letter-spacing: 0.7px;
 
   & + div {
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   label {
+    line-height: 12px;
     font-size: 14px;
     text-transform: uppercase;
     color: #666;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
   }
 
   input {
@@ -48,8 +49,10 @@ export const Container = styled.div<ContainerProps>`
 `;
 
 export const Info = styled(Popover)`
-  height: 20px;
+  height: 30px;
   margin-left: 16px;
+  display: flex;
+  align-items: flex-end;
 
   svg {
     margin: 0;

@@ -23,13 +23,10 @@ const Select: FC<Props> = ({ name, label, options, ...rest }) => {
     });
   }, [fieldName, registerField]);
 
-  console.log(selectRef);
-
   return (
     <Container hasError={!!error}>
       <label>{label}</label>
       <select ref={selectRef} defaultValue={defaultValue} {...rest}>
-        <option value="">Select</option>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.title}

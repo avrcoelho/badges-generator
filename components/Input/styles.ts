@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import Popover from "../Popover";
+
 interface ContainerProps {
   hasError: boolean;
 }
@@ -19,6 +21,10 @@ export const Container = styled.div<ContainerProps>`
     font-size: 14px;
     text-transform: uppercase;
     color: #666;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
   input {
@@ -38,5 +44,23 @@ export const Container = styled.div<ContainerProps>`
     color: #ed0000;
     line-height: 1.75;
     letter-spacing: normal;
+  }
+`;
+
+export const Info = styled(Popover)`
+  height: 20px;
+  margin-left: 16px;
+
+  svg {
+    margin: 0;
+  }
+
+  span {
+    background-color: #333;
+    color: #fff;
+
+    &::before {
+      border-color: #333 transparent;
+    }
   }
 `;

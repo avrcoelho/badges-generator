@@ -5,10 +5,6 @@ export interface Option {
 
 export const optionsStyles: Option[] = [
   {
-    value: "plastic",
-    title: "plastic",
-  },
-  {
     value: "flat",
     title: "flat",
   },
@@ -19,6 +15,10 @@ export const optionsStyles: Option[] = [
   {
     value: "for-the-badge",
     title: "for-the-badge",
+  },
+  {
+    value: "plastic",
+    title: "plastic",
   },
   {
     value: "social",

@@ -1,15 +1,17 @@
 import React, { useEffect, useRef } from "react";
 import { useField } from "@unform/core";
 import ReactInputMask, { Props as InputProps } from "react-input-mask";
+import { FiHelpCircle } from "react-icons/fi";
 
-import { Container } from "./styles";
+import { Container, Info } from "./styles";
 
 interface Props extends InputProps {
   name: string;
-  label?: string;
+  label: string;
+  info?: string;
 }
 
-const InputMask: React.FC<Props> = ({ name, label, ...rest }) => {
+const InputMask: React.FC<Props> = ({ name, label, info, ...rest }) => {
   const inputRef = useRef(null);
   const { fieldName, defaultValue, registerField, error } = useField(name);
 
@@ -29,7 +31,14 @@ const InputMask: React.FC<Props> = ({ name, label, ...rest }) => {
 
   return (
     <Container hasError={!!error}>
-      <label>{label}</label>
+      <label>
+        {label}
+        {info && (
+          <Info title={info}>
+            <FiHelpCircle size={18} color="#666" />
+          </Info>
+        )}
+      </label>
       <ReactInputMask
         type="tel"
         ref={inputRef}

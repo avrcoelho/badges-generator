@@ -19,6 +19,10 @@ export const Container = styled.div<ContainerProps>`
     font-size: 14px;
     text-transform: uppercase;
     color: #666;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
   select {

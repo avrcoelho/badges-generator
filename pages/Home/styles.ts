@@ -29,11 +29,65 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 50px;
-  margin-bottom: 100px;
+
   padding: 0 20px;
 
   form {
     flex: 1;
+  }
+`;
+
+export const Code = styled.div`
+  width: 100%;
+  overflow: auto;
+  border-radius: 4px;
+
+  & + div {
+    margin-top: 32px;
+  }
+
+  h3 {
+    color: #5b0095;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+`;
+
+export const ResultContainer = styled.section`
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 100px;
+
+  pre {
+    overflow: auto;
+    display: block;
+    padding: 0;
+    margin: 0;
+
+    .code-block {
+      border-radius: 0;
+      margin-bottom: 0;
+      float: left;
+      min-width: 100%;
+    }
+
+    code {
+      color: #333;
+      background-color: #fafafa;
+      padding: 1rem;
+      display: inline;
+      font-size: 100%;
+      line-height: inherit;
+      overflow: visible;
+      white-space: pre;
+      word-break: normal;
+    }
   }
 `;
 

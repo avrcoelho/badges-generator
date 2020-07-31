@@ -1,4 +1,4 @@
-import { FC, useRef, useCallback } from "react";
+import { FC, useRef, useCallback, useState } from "react";
 import Head from "next/head";
 import { Form } from "@unform/web";
 import { FormHandles } from "@unform/core";
@@ -12,7 +12,15 @@ import Button from "../../components/Button";
 import getValidationError from "../../utils/getValidationErros";
 import { optionsStyles } from "../../constants/optionStyles";
 
-import { Main, Title, SubTitle, FormContainer, Footer } from "./styles";
+import {
+  Main,
+  Title,
+  SubTitle,
+  FormContainer,
+  ResultContainer,
+  Code,
+  Footer,
+} from "./styles";
 
 interface FormData {
   label: string;
@@ -28,6 +36,9 @@ interface FormData {
 }
 
 const Home: FC = () => {
+  const [markdownCode, setMarkdownCode] = useState("");
+  const [htmlCode, setHtmlCode] = useState("");
+
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(async (data: FormData) => {
@@ -41,8 +52,51 @@ const Home: FC = () => {
       await schema.validate(data, {
         abortEarly: false,
       });
-      // Validation passed
-      console.log(data);
+      // Validation passe
+      let params = "";
+      let outherParams = "";
+      let html = "";
+      let link: null | string = null;
+      const shielbLink = "https://img.shields.io/badge/";
+
+      params += `${data.label.trim()}-`;
+      params += data.message.trim() ? `${data.message.trim()}-` : "";
+      params +=
+        data.message.trim() && data.color.trim() ? `${data.color.trim()}-` : "";
+      params +=
+        !data.message.trim() && data.labelColor.trim()
+          ? `${data.labelColor.replace("#", "").trim()}-`
+          : "";
+
+      Object.entries(data).forEach(([key, value]) => {
+        if (
+          value.trim() &&
+          key !== "label" &&
+          key !== "message" &&
+          key !== "color" &&
+          data.message.trim()
+        ) {
+          outherParams += `${key}=${value}&`;
+
+          if (data.link) {
+            link = data.link;
+          }
+        }
+      });
+
+      params = params.substr(0, params.length - 1);
+      outherParams = outherParams.substr(0, outherParams.length - 1);
+
+      const markdoun = `[![${
+        data.label
+      }](${shielbLink}${params}?${outherParams})]${link ? `(${link})` : ""}`;
+
+      html = link ? `<a href="${link}">` : "";
+      html += `<img src="${shielbLink}${params}?${outherParams}" alt="${data.label}" />`;
+      html += link ? "</a>" : "";
+
+      setMarkdownCode(markdoun);
+      setHtmlCode(html);
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         const errors = getValidationError(error);
@@ -150,7 +204,29 @@ const Home: FC = () => {
           </Form>
         </FormContainer>
       </Main>
-
+      <ResultContainer>
+        {markdownCode && (
+          <>
+            <div dangerouslySetInnerHTML={{ __html: htmlCode }} />
+            <Code>
+              <h3>Marldown</h3>
+              <pre>
+                <code className="code-block">
+                  <div>{markdownCode}</div>
+                </code>
+              </pre>
+            </Code>
+            <Code>
+              <h3>HTML</h3>
+              <pre>
+                <code className="code-block">
+                  <div>{htmlCode}</div>
+                </code>
+              </pre>
+            </Code>
+          </>
+        )}
+      </ResultContainer>
       <Footer>
         <span>developed by</span>
         <a href="https://andrecoelho.dev" target="_blank">

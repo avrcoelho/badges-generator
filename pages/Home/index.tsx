@@ -42,6 +42,11 @@ const Home: FC = () => {
       formRef.current.setErrors({});
       const schema = Yup.object().shape({
         label: Yup.string().required("Required field"),
+        message: Yup.string().when("style", {
+          is: (value) => value === "social",
+          then: Yup.string().required("Required field"),
+          otherwise: Yup.string(),
+        }),
         style: Yup.string().required("Required field"),
       });
       await schema.validate(data, {
@@ -58,9 +63,8 @@ const Home: FC = () => {
       params += data.message.trim() ? `${data.message.trim()}-` : "";
       params +=
         data.message.trim() && data.color.trim() ? `${data.color.trim()}-` : "";
-      params += data.message.trim() && !data.color.trim() ? "98cb00-" : "";
-      params +=
-        !data.message.trim() && !data.labelColor.trim() ? "545454-" : "";
+      params += data.message.trim() && !data.color.trim() ? "green-" : "";
+      params += !data.message.trim() && !data.labelColor.trim() ? "gray-" : "";
       params +=
         !data.message.trim() && data.labelColor.trim()
           ? `${data.labelColor.replace("#", "").trim()}-`
@@ -140,19 +144,19 @@ const Home: FC = () => {
             <Input
               name="labelColor"
               label="label Color"
-              placeholder="Optional (Default: #545454)"
+              placeholder="Optional (Default: gray)"
               info={`Set background of the left part (hex, rgb, rgba, hsl, hsla and css named colors supported). The legacy name "colorA" is also supported.`}
             />
             <Input
               name="message"
               label="Message"
               info="right-hand-side text"
-              placeholder="Optional"
+              placeholder="Required if the style is social"
               widthTootip={150}
             />
             <Input
               name="color"
-              placeholder="Optional (Default: #98cb00)"
+              placeholder="Optional (Default: green)"
               label="Message Color"
               info={`Set background of the right part (hex, rgb, rgba, hsl, hsla and css named colors supported). The legacy name "colorA" is also supported.`}
             />

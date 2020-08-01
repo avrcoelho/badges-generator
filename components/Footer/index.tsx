@@ -14,7 +14,6 @@ const Footer: FC = () => (
         />
       </a>
     </div>
-
     <div>
       <span>
         Powered by{" "}

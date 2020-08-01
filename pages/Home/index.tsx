@@ -1,26 +1,21 @@
 import { FC, useRef, useCallback, useState } from "react";
-import Head from "next/head";
 import { Form } from "@unform/web";
 import { FormHandles } from "@unform/core";
 import * as Yup from "yup";
+import { scroller } from "react-scroll";
 
+import Head from "../../components/Head";
 import Input from "../../components/Input";
 import InputMask from "../../components/InputMask";
 import Select from "../../components/Select";
 import Button from "../../components/Button";
+import Results from "../../components/Results";
+import Footer from "../../components/Footer";
 
 import getValidationError from "../../utils/getValidationErros";
 import { optionsStyles } from "../../constants/optionStyles";
 
-import {
-  Main,
-  Title,
-  SubTitle,
-  FormContainer,
-  ResultContainer,
-  Code,
-  Footer,
-} from "./styles";
+import { Main, Title, SubTitle, FormContainer } from "./styles";
 
 interface FormData {
   label: string;
@@ -63,6 +58,9 @@ const Home: FC = () => {
       params += data.message.trim() ? `${data.message.trim()}-` : "";
       params +=
         data.message.trim() && data.color.trim() ? `${data.color.trim()}-` : "";
+      params += data.message.trim() && !data.color.trim() ? "98cb00-" : "";
+      params +=
+        !data.message.trim() && !data.labelColor.trim() ? "545454-" : "";
       params +=
         !data.message.trim() && data.labelColor.trim()
           ? `${data.labelColor.replace("#", "").trim()}-`
@@ -73,10 +71,17 @@ const Home: FC = () => {
           value.trim() &&
           key !== "label" &&
           key !== "message" &&
-          key !== "color" &&
-          data.message.trim()
+          key !== "color"
         ) {
-          outherParams += `${key}=${value}&`;
+          if (
+            key === "labelColor" &&
+            data.labelColor.trim() &&
+            data.message.trim()
+          ) {
+            outherParams += `${key}=${value.replace("#", "")}&`;
+          } else if (key !== "labelColor") {
+            outherParams += `${key}=${value}&`;
+          }
 
           if (data.link) {
             link = data.link;
@@ -87,16 +92,24 @@ const Home: FC = () => {
       params = params.substr(0, params.length - 1);
       outherParams = outherParams.substr(0, outherParams.length - 1);
 
-      const markdoun = `[![${
-        data.label
-      }](${shielbLink}${params}?${outherParams})]${link ? `(${link})` : ""}`;
+      const markdoun = `[![${data.label}](${shielbLink}${params}${
+        outherParams ? `?${outherParams}` : ""
+      })]${link ? `(${link})` : ""}`;
 
       html = link ? `<a href="${link}">` : "";
-      html += `<img src="${shielbLink}${params}?${outherParams}" alt="${data.label}" />`;
+      html += `<img src="${shielbLink}${params}${
+        outherParams ? `?${outherParams}` : ""
+      }" alt="${data.label}" />`;
       html += link ? "</a>" : "";
 
       setMarkdownCode(markdoun);
       setHtmlCode(html);
+
+      scroller.scrollTo("results", {
+        duration: 1500,
+        delay: 0,
+        smooth: "easeInOutQuart",
+      });
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         const errors = getValidationError(error);
@@ -110,15 +123,7 @@ const Home: FC = () => {
 
   return (
     <>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-
+      <Head title="Generate Badges for GitHub" />
       <Main>
         <Title>Custom Badges Generator</Title>
         <SubTitle>For GitHub</SubTitle>
@@ -135,7 +140,7 @@ const Home: FC = () => {
             <Input
               name="labelColor"
               label="label Color"
-              placeholder="Optional"
+              placeholder="Optional (Default: #545454)"
               info={`Set background of the left part (hex, rgb, rgba, hsl, hsla and css named colors supported). The legacy name "colorA" is also supported.`}
             />
             <Input
@@ -147,7 +152,7 @@ const Home: FC = () => {
             />
             <Input
               name="color"
-              placeholder="Optional"
+              placeholder="Optional (Default: #98cb00)"
               label="Message Color"
               info={`Set background of the right part (hex, rgb, rgba, hsl, hsla and css named colors supported). The legacy name "colorA" is also supported.`}
             />
@@ -180,8 +185,9 @@ const Home: FC = () => {
               placeholder="Optional"
               info="Set the color of the logo (hex, rgb, rgba, hsl, hsla and css named colors supported). Supported for named logos but not for custom logos."
             />
-            <Input
+            <InputMask
               name="logoWidth"
+              mask="99999999999999999999"
               label="Logo width"
               placeholder="Optional"
               info="Set the horizontal space to give to the logo"
@@ -204,39 +210,8 @@ const Home: FC = () => {
           </Form>
         </FormContainer>
       </Main>
-      <ResultContainer>
-        {markdownCode && (
-          <>
-            <div dangerouslySetInnerHTML={{ __html: htmlCode }} />
-            <Code>
-              <h3>Marldown</h3>
-              <pre>
-                <code className="code-block">
-                  <div>{markdownCode}</div>
-                </code>
-              </pre>
-            </Code>
-            <Code>
-              <h3>HTML</h3>
-              <pre>
-                <code className="code-block">
-                  <div>{htmlCode}</div>
-                </code>
-              </pre>
-            </Code>
-          </>
-        )}
-      </ResultContainer>
-      <Footer>
-        <span>developed by</span>
-        <a href="https://andrecoelho.dev" target="_blank">
-          <img
-            src="/assets/images/andrecoelho.png"
-            width={150}
-            alt="andrecoelho.dev"
-          />
-        </a>
-      </Footer>
+      {markdownCode && <Results markdown={markdownCode} html={htmlCode} />}
+      <Footer />
     </>
   );
 };

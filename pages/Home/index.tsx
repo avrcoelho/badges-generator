@@ -62,7 +62,9 @@ const Home: FC = () => {
       params += `${data.label.trim()}-`;
       params += data.message.trim() ? `${data.message.trim()}-` : "";
       params +=
-        data.message.trim() && data.color.trim() ? `${data.color.trim()}-` : "";
+        data.message.trim() && data.color.trim()
+          ? `${data.color.replace("#", "").trim()}-`
+          : "";
       params += data.message.trim() && !data.color.trim() ? "green-" : "";
       params += !data.message.trim() && !data.labelColor.trim() ? "gray-" : "";
       params +=
@@ -86,12 +88,12 @@ const Home: FC = () => {
           } else if (key !== "labelColor") {
             outherParams += `${key}=${value}&`;
           }
-
-          if (data.link) {
-            link = data.link;
-          }
         }
       });
+
+      if (data.link) {
+        link = data.link;
+      }
 
       params = params.substr(0, params.length - 1);
       outherParams = outherParams.substr(0, outherParams.length - 1);
@@ -130,7 +132,7 @@ const Home: FC = () => {
       <Head title="Generate Badges for GitHub" />
       <Main>
         <Title>Custom Badges Generator</Title>
-        <SubTitle>For GitHub</SubTitle>
+        <SubTitle>For README.md</SubTitle>
 
         <FormContainer>
           <Form ref={formRef} onSubmit={handleSubmit}>

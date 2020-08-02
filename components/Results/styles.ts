@@ -16,6 +16,32 @@ export const Container = styled.section`
       margin-bottom: 20px;
     }
   }
+`;
+
+export const Code = styled.div`
+  width: 100%;
+  border-radius: 4px;
+  position: relative;
+
+  & + div {
+    margin-top: 32px;
+  }
+
+  .code-block {
+    position: relative;
+
+    &:hover pre button {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  h3 {
+    color: #5b0095;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
 
   pre {
     overflow: auto;
@@ -23,11 +49,12 @@ export const Container = styled.section`
     padding: 0;
     margin: 0;
 
-    .code-block {
+    .code {
       border-radius: 0;
       margin-bottom: 0;
       float: left;
       min-width: 100%;
+      position: relative;
     }
 
     code {
@@ -40,23 +67,29 @@ export const Container = styled.section`
       overflow: visible;
       white-space: pre;
       word-break: normal;
+      max-width: auto;
     }
   }
 `;
 
-export const Code = styled.div`
-  width: 100%;
-  overflow: auto;
-  border-radius: 4px;
-
-  & + div {
-    margin-top: 32px;
-  }
-
-  h3 {
-    color: #5b0095;
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
+export const ButtonCopy = styled.button`
+  background: #011627;
+  border: 1px solid #d6deeb;
+  border-radius: 0.4rem;
+  color: #d6deeb;
+  cursor: pointer;
+  line-height: 12px;
+  opacity: 0;
+  outline: none;
+  padding: 4px 8px;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  visibility: hidden;
+  -webkit-transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out,
+    bottom 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out,
+    bottom 0.2s ease-in-out;
+  z-index: 2;
+  font-size: 14px;
 `;

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest --env=jest-environment-jsdom-sixteen"
+    "test": "jest --env=jest-environment-jsdom-sixteen",
+    "export": "next export"
   },
   "dependencies": {
     "@unform/core": "^2.1.3",

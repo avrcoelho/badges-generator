@@ -127,10 +127,10 @@ const Home: FC = () => {
 
   return (
     <>
-      <Head title="Generate Badges for GitHub" />
+      <Head title="Badges Generator for README.md" />
       <Main>
         <Title>Badges Generator</Title>
-        <SubTitle>For README.md</SubTitle>
+        <SubTitle>for README.md</SubTitle>
 
         <FormContainer>
           <Form ref={formRef} onSubmit={handleSubmit}>

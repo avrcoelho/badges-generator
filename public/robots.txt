@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://badgesgenerator.com/sitemap.xml
+Host: https://badgesgenerator.com

@@ -1,5 +1,5 @@
-import { FC } from "react";
-import Container from "next/head";
+import React, { FC } from 'react';
+import Container from 'next/head';
 
 interface Props {
   title: string;

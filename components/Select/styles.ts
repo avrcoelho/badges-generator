@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface ContainerProps {
   hasError: boolean;
@@ -32,7 +32,7 @@ export const Container = styled.div<ContainerProps>`
     height: 40px;
     border: 0;
     border-bottom: 2px solid
-      ${({ hasError }) => (hasError ? "#ed0000" : "#999")};
+      ${({ hasError }) => (hasError ? '#ed0000' : '#999')};
 
     option[value]:checked,
     option[value]:checked {

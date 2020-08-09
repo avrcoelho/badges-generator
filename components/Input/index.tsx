@@ -1,8 +1,14 @@
-import { FC, useEffect, useRef, InputHTMLAttributes, ReactNode } from "react";
-import { useField } from "@unform/core";
-import { FiHelpCircle } from "react-icons/fi";
+import React, {
+  FC,
+  useEffect,
+  useRef,
+  InputHTMLAttributes,
+  ReactNode,
+} from 'react';
+import { useField } from '@unform/core';
+import { FiHelpCircle } from 'react-icons/fi';
 
-import { Container, Info } from "./styles";
+import { Container, Info } from './styles';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -19,13 +25,13 @@ const Input: FC<Props> = ({ name, label, widthTootip, info, ...rest }) => {
     registerField({
       name: fieldName,
       ref: inputRef.current,
-      path: "value",
+      path: 'value',
     });
   }, [fieldName, registerField]);
 
   return (
     <Container hasError={!!error}>
-      <label>
+      <label htmlFor={name}>
         {label}
         {info && (
           <Info title={info} width={widthTootip}>
@@ -33,7 +39,7 @@ const Input: FC<Props> = ({ name, label, widthTootip, info, ...rest }) => {
           </Info>
         )}
       </label>
-      <input ref={inputRef} defaultValue={defaultValue} {...rest} />
+      <input ref={inputRef} id={name} defaultValue={defaultValue} {...rest} />
       {error && <small>{error}</small>}
     </Container>
   );

@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import Popover from "../Popover";
+import Popover from '../Popover';
 
 interface ContainerProps {
   hasError: boolean;
@@ -33,7 +33,7 @@ export const Container = styled.div<ContainerProps>`
     height: 40px;
     border: 0;
     border-bottom: 2px solid
-      ${({ hasError }) => (hasError ? "#ed0000" : "#999")};
+      ${({ hasError }) => (hasError ? '#ed0000' : '#999')};
 
     &::placeholder {
       color: #ccc;

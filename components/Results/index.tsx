@@ -1,7 +1,7 @@
-import { FC, useCallback, useState, useEffect } from "react";
-import { Element as ScrollElement } from "react-scroll";
+import React, { FC, useCallback, useState, useEffect } from 'react';
+import { Element as ScrollElement } from 'react-scroll';
 
-import { Container, Code, ButtonCopy } from "./styles";
+import { Container, Code, ButtonCopy } from './styles';
 
 interface Props {
   markdown: string;
@@ -15,18 +15,18 @@ interface CopiedState {
 
 const Results: FC<Props> = ({ markdown, html }) => {
   const [copiedStatus, setCopiedStatus] = useState<CopiedState>({
-    type: "",
+    type: '',
     copied: false,
   });
 
   useEffect(() => {
-    if (copiedStatus.type === "") {
+    if (copiedStatus.type === '') {
       return;
     }
 
     const timeout = setTimeout(() => {
       setCopiedStatus({
-        type: "",
+        type: '',
         copied: false,
       });
     }, 3000);
@@ -36,14 +36,17 @@ const Results: FC<Props> = ({ markdown, html }) => {
     };
   }, [copiedStatus]);
 
-  const handleCopy = useCallback((type: string) => {
-    navigator.clipboard.writeText(type === "html" ? html : markdown);
+  const handleCopy = useCallback(
+    (type: string) => {
+      navigator.clipboard.writeText(type === 'html' ? html : markdown);
 
-    setCopiedStatus({
-      type: type,
-      copied: true,
-    });
-  }, []);
+      setCopiedStatus({
+        type,
+        copied: true,
+      });
+    },
+    [html, markdown],
+  );
 
   return (
     <Container>
@@ -53,13 +56,13 @@ const Results: FC<Props> = ({ markdown, html }) => {
           dangerouslySetInnerHTML={{ __html: html }}
         />
         <Code>
-          <h3>Marldown</h3>
+          <h3>Markdown</h3>
           <div className="code-block">
             <pre>
-              <ButtonCopy type="button" onClick={() => handleCopy("markdown")}>
-                {copiedStatus.copied && copiedStatus.type === "markdown"
-                  ? "Copied"
-                  : "Copy"}
+              <ButtonCopy type="button" onClick={() => handleCopy('markdown')}>
+                {copiedStatus.copied && copiedStatus.type === 'markdown'
+                  ? 'Copied'
+                  : 'Copy'}
               </ButtonCopy>
               <code className="code">
                 <div>{markdown}</div>
@@ -71,10 +74,10 @@ const Results: FC<Props> = ({ markdown, html }) => {
           <h3>HTML</h3>
           <div className="code-block">
             <pre>
-              <ButtonCopy type="button" onClick={() => handleCopy("html")}>
-                {copiedStatus.copied && copiedStatus.type === "html"
-                  ? "Copied"
-                  : "Copy"}
+              <ButtonCopy type="button" onClick={() => handleCopy('html')}>
+                {copiedStatus.copied && copiedStatus.type === 'html'
+                  ? 'Copied'
+                  : 'Copy'}
               </ButtonCopy>
               <code className="code">
                 <div>{html}</div>

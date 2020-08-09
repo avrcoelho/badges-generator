@@ -1,9 +1,9 @@
-import { FC, useEffect, useRef, SelectHTMLAttributes } from "react";
-import { useField } from "@unform/core";
+import React, { FC, useEffect, useRef, SelectHTMLAttributes } from 'react';
+import { useField } from '@unform/core';
 
-import { Option } from "../../constants/optionStyles";
+import { Option } from '../../constants/optionStyles';
 
-import { Container } from "./styles";
+import { Container } from './styles';
 
 interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
   name: string;
@@ -19,15 +19,15 @@ const Select: FC<Props> = ({ name, label, options, ...rest }) => {
     registerField({
       name: fieldName,
       ref: selectRef.current,
-      path: "value",
+      path: 'value',
     });
   }, [fieldName, registerField]);
 
   return (
     <Container hasError={!!error}>
-      <label>{label}</label>
-      <select ref={selectRef} defaultValue={defaultValue} {...rest}>
-        {options.map((option) => (
+      <label htmlFor={name}>{label}</label>
+      <select id={name} ref={selectRef} defaultValue={defaultValue} {...rest}>
+        {options.map(option => (
           <option key={option.value} value={option.value}>
             {option.title}
           </option>

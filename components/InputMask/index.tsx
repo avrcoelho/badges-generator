@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from "react";
-import { useField } from "@unform/core";
-import ReactInputMask, { Props as InputProps } from "react-input-mask";
-import { FiHelpCircle } from "react-icons/fi";
+import React, { useEffect, useRef } from 'react';
+import { useField } from '@unform/core';
+import ReactInputMask, { Props as InputProps } from 'react-input-mask';
+import { FiHelpCircle } from 'react-icons/fi';
 
-import { Container, Info } from "./styles";
+import { Container, Info } from './styles';
 
 interface Props extends InputProps {
   name: string;
@@ -19,19 +19,19 @@ const InputMask: React.FC<Props> = ({ name, label, info, ...rest }) => {
     registerField({
       name: fieldName,
       ref: inputRef.current,
-      path: "value",
+      path: 'value',
       setValue(ref: any, value: string) {
         ref.setInputValue(value);
       },
       clearValue(ref: any) {
-        ref.setInputValue("");
+        ref.setInputValue('');
       },
     });
   }, [fieldName, registerField]);
 
   return (
     <Container hasError={!!error}>
-      <label>
+      <label htmlFor={name}>
         {label}
         {info && (
           <Info title={info}>
@@ -40,6 +40,7 @@ const InputMask: React.FC<Props> = ({ name, label, info, ...rest }) => {
         )}
       </label>
       <ReactInputMask
+        id={name}
         type="tel"
         ref={inputRef}
         defaultValue={defaultValue}

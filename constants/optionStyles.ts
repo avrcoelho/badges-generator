@@ -5,23 +5,23 @@ export interface Option {
 
 export const optionsStyles: Option[] = [
   {
-    value: "flat",
-    title: "flat",
+    value: 'flat',
+    title: 'flat',
   },
   {
-    value: "flat-square",
-    title: "flat-square",
+    value: 'flat-square',
+    title: 'flat-square',
   },
   {
-    value: "for-the-badge",
-    title: "for-the-badge",
+    value: 'for-the-badge',
+    title: 'for-the-badge',
   },
   {
-    value: "plastic",
-    title: "plastic",
+    value: 'plastic',
+    title: 'plastic',
   },
   {
-    value: "social",
-    title: "social",
+    value: 'social',
+    title: 'social',
   },
 ];

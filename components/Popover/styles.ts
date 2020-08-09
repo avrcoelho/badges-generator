@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface ContainerProps {
   width: number;
@@ -41,7 +41,7 @@ export const Container = styled.div<ContainerProps>`
       left: 50%;
       transform: translateX(-50%);
       position: absolute;
-      content: "";
+      content: '';
 
       @media (max-width: 750px) {
         right: 0;

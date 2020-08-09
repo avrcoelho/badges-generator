@@ -1,7 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Input from '../../components/Input';
+import { optionsStyles } from '../../constants/optionStyles';
+
+import Select from '../../components/Select';
 
 const mockedError = jest.fn();
 
@@ -20,23 +22,27 @@ jest.mock('@unform/core', () => {
   };
 });
 
-describe('Input', () => {
+describe('Select', () => {
   const props = {
     label: 'Label',
     name: 'player',
+    options: optionsStyles,
   };
 
-  it('should be able to render input and props', () => {
-    const { container, getByLabelText } = render(<Input {...props} />);
+  it('should be able to render select and props', () => {
+    const { container, getByLabelText } = render(<Select {...props} />);
 
     expect(getByLabelText(props.label)).toBeTruthy();
     expect(container.querySelector('small')).toBeFalsy();
+    expect(container.querySelectorAll('option').length).toBe(
+      optionsStyles.length,
+    );
   });
 
   it('should be able to render error', () => {
     mockedError.mockImplementation(() => 'Invalid input');
 
-    const { getByText } = render(<Input {...props} />);
+    const { getByText } = render(<Select {...props} />);
 
     expect(getByText('Invalid input')).toBeTruthy();
   });

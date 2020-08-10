@@ -20,7 +20,7 @@ Badges Generator for README.md
 [https://badgesgenerator.com](https://badgesgenerator.com)
 
 Powered by [Shields IO](https://shields.io/)<br />
-Development by: [André Coelho](https://github.com/avrcoelho)
+Development by: [André Coelho](https://andrecoelho.dev)
 
 ## Technologies used
 

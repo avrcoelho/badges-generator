@@ -32,4 +32,4 @@ Development by: [André Coelho](https://andrecoelho.dev)
 
 ## License
 
-[![License](https://img.shields.io/badge/License-MIT-green?style=flat&logoColor=f00&link=https://opensource.org/licenses/MIT)](https://opensource.org/licenses/MIT)
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=flat&logoColor=f00&link=https://opensource.org/licenses/MIT)](https://opensource.org/licenses/MIT)

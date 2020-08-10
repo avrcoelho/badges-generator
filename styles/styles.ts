@@ -3,9 +3,29 @@ import styled from 'styled-components';
 export const Main = styled.main`
   display: flex;
   flex: 1;
+  min-height: calc(100vh - 139.88px);
   justify-content: center;
   align-items: center;
   flex-direction: column;
+`;
+
+export const Content404 = styled.div`
+  display: flex;
+  flex: 1;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h1 {
+    font-size: 50px;
+    color: #5b0095;
+  }
+
+  p {
+    color: #666;
+    font-size: 14px;
+  }
 `;
 
 export const Title = styled.h1`

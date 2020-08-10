@@ -98,9 +98,9 @@ const Home: FC = () => {
       params = params.substr(0, params.length - 1);
       outherParams = outherParams.substr(0, outherParams.length - 1);
 
-      const markdoun = `[![${data.label}](${shielbLink}${params}${
+      const markdoun = `${link ? `[` : ''}![${data.label}](${shielbLink}${params}${
         outherParams ? `?${outherParams}` : ''
-      })]${link ? `(${link})` : ''}`;
+      })${link ? `](${link})` : ''}`;
 
       html = link ? `<a href="${link}">` : '';
       html += `<img src="${shielbLink}${params}${

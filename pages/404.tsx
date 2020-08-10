@@ -13,6 +13,7 @@ const Page404: FC = () => {
         <Content404>
           <h1>404</h1>
           <p>This page could not be found</p>
+          <a href="/">Back to home</a>
         </Content404>
       </Main>
       <Footer />

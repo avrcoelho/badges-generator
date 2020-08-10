@@ -18,6 +18,15 @@ export const Container = styled.footer`
     align-items: center;
     justify-content: center;
 
+    a {
+      text-decoration: none;
+      color: #5b0095;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
     & + div {
       margin-top: 12px;
     }

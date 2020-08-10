@@ -26,6 +26,17 @@ export const Content404 = styled.div`
     color: #666;
     font-size: 14px;
   }
+
+  a {
+    color: #5b0095;
+    font-size: 14px;
+    margin-top: 30px;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 export const Title = styled.h1`

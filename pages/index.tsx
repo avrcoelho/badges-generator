@@ -15,7 +15,7 @@ import Footer from '../components/Footer';
 import getValidationError from '../utils/getValidationErros';
 import { optionsStyles } from '../constants/optionStyles';
 
-import { Main, Title, SubTitle, FormContainer } from './styles';
+import { Main, Title, SubTitle, FormContainer } from '../styles/styles';
 
 interface FormData {
   label: string;
@@ -39,7 +39,7 @@ const Home: FC = () => {
   const handleSubmit = useCallback(async (data: FormData) => {
     try {
       // Remove all previous errors
-      formRef.current.setErrors({});
+      formRef?.current.setErrors({});
       const schema = Yup.object().shape({
         label: Yup.string().required('Required field'),
         message: Yup.string().when('style', {

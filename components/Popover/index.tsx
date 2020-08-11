@@ -15,7 +15,11 @@ const Popover: React.FC<PopoverProps> = ({
   children,
 }) => {
   const handleDontFocusInput = useCallback((e: MouseEvent) => {
-    e.preventDefault();
+    const element = e.target as HTMLElement;
+
+    if (element.tagName !== 'A') {
+      e.preventDefault();
+    }
   }, []);
 
   return (

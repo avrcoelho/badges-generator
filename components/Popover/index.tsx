@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, MouseEvent, useCallback } from 'react';
 
 import { Container } from './styles';
 
@@ -14,8 +14,16 @@ const Popover: React.FC<PopoverProps> = ({
   className,
   children,
 }) => {
+  const handleDontFocusInput = useCallback((e: MouseEvent) => {
+    e.preventDefault();
+  }, []);
+
   return (
-    <Container className={className} width={width}>
+    <Container
+      className={className}
+      width={width}
+      onClick={handleDontFocusInput}
+    >
       {children}
       <span>{title}</span>
     </Container>

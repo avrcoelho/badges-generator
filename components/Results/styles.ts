@@ -68,6 +68,7 @@ export const Code = styled.div`
       white-space: pre;
       word-break: normal;
       max-width: auto;
+      font-size: 14px;
     }
   }
 `;

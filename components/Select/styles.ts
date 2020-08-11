@@ -30,6 +30,7 @@ export const Container = styled.div<ContainerProps>`
   select {
     width: 100%;
     height: 40px;
+    border-radius: 0;
     border: 0;
     border-bottom: 2px solid
       ${({ hasError }) => (hasError ? '#ed0000' : '#999')};

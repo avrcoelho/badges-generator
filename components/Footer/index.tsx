@@ -13,7 +13,7 @@ const Footer: FC = () => (
       </span>
     </div>
     <div>
-      <span>developed by</span>
+      <span>Developed by</span>
       <a href="https://andrecoelho.dev" target="_blank" rel="noreferrer">
         <img
           src="/assets/images/andrecoelho.png"

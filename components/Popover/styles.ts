@@ -22,7 +22,7 @@ export const Container = styled.div<ContainerProps>`
     color: #312e38;
     visibility: hidden;
     text-transform: none;
-    line-height: 16px;
+    line-height: 17px;
 
     a {
       color: #fff;

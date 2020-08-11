@@ -69,6 +69,10 @@ export const Code = styled.div`
       word-break: normal;
       max-width: auto;
       font-size: 14px;
+
+      @media (max-width: 960px) {
+        font-size: 14px;
+      }
     }
   }
 `;

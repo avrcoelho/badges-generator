@@ -71,7 +71,7 @@ export const Code = styled.div`
       font-size: 14px;
 
       @media (max-width: 960px) {
-        font-size: 14px;
+        font-size: 12px;
       }
     }
   }

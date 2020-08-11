@@ -23,6 +23,10 @@ const Head: FC<Props> = ({ title }) => {
       <meta name="twitter:title" content="Badges Generator for README.md" />
       <meta property="og:site_name" content="Badges Generator for README.md" />
       <meta property="og:url" content="https://badgesgenerator.com" />
+      <meta
+        property="og:image"
+        content="https://badgesgenerator.com/assets/images/andrecoelho-og.png"
+      />
 
       <title>{title}</title>
 

@@ -26,6 +26,7 @@ export const Container = styled.div<ContainerProps>`
 
     a {
       color: #fff;
+      font-weight: bold;
     }
 
     @media (max-width: 750px) {

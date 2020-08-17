@@ -18,10 +18,10 @@ const Head: FC<Props> = ({ title }) => {
       />
       <meta
         name="description"
-        content="Generate badges in HTML and Markdown for README.md."
+        content="Generate in HTML and Markdown custom badges for README.md files for GitHub, GitLab, Bitbucket and etc."
       />
-      <meta property="og:description" content="Generate badges in HTML and Markdown for README.md." />
-      <meta name="twitter:description" content="Generate badges in HTML and Markdown for README.md." />
+      <meta property="og:description" content="Generate in HTML and Markdown custom badges for README.md files for GitHub, GitLab, Bitbucket and etc." />
+      <meta name="twitter:description" content="Generate in HTML and Markdown custom badges for README.md files for GitHub, GitLab, Bitbucket and etc." />
       <meta property="og:title" content="Badges Generator for README.md" />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary" />

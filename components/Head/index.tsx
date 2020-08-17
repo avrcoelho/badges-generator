@@ -16,6 +16,10 @@ const Head: FC<Props> = ({ title }) => {
         name="keywords"
         content="badge, badges, generator, generate, custom, readme, reademe.md, github, gitlab, bitbucket, shields, shields.io"
       />
+      <meta
+        name="description"
+        content="Generate badges in HTML and Markdown for README.md"
+      />
       <meta property="og:title" content="Badges Generator for README.md" />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary" />

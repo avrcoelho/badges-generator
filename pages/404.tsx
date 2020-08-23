@@ -14,7 +14,9 @@ const Page404: FC = () => {
         <Content404>
           <h1>404</h1>
           <p>This page could not be found</p>
-          <Link href="/">Go to home</Link>
+          <Link href="/">
+            <a>Go to home</a>
+          </Link>
         </Content404>
       </Main>
       <Footer />
